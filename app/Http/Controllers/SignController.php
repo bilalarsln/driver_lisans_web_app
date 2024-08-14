@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnnouncementModel;
 use App\Models\PanelUserModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SignController extends Controller
 {
+
+
     public function signIn()
     {
         return view('admin_panel.signin');
@@ -25,10 +28,11 @@ class SignController extends Controller
             'password' => 'required|string|min:6',
         ]);
         $user = PanelUserModel::where('email', $request->email)->first();
+        $announcement = AnnouncementModel::all();
 
         if ($request->password == $user->password) {
             Auth::login($user);
-            return redirect()->intended('admin_index');
+            return view('admin_panel.admin_index', compact('user', 'announcement'));
         }
         return back()->withErrors([
             'email' => 'Girdiğiniz bilgiler hatalı.',
