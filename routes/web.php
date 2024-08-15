@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/announcementdelete', [AnnouncementController::class, 'delete'])->name('announcementdelete');
     Route::post('/announcementadd', [AnnouncementController::class, 'add'])->name('announcementadd');
     Route::get('/announcement', [AnnouncementController::class, 'announcement'])->name('announcement');
+    Route::put('/announcement/{id}/activity', [AnnouncementController::class, 'updateActivity'])->name('announcement.updateActivity');
 
     // Diğer admin route'ları
 });

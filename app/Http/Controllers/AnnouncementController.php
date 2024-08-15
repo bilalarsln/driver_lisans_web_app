@@ -13,6 +13,7 @@ class AnnouncementController extends Controller
         $announcement = AnnouncementModel::orderBy('due_date', 'desc')->get();
         return view("admin_panel.announcement_page", compact('announcement'));
     }
+
     public function update(Request $request)
     {
         $announcement = AnnouncementModel::find($request->id);
@@ -20,11 +21,11 @@ class AnnouncementController extends Controller
         $announcement->content = $request->content;
         $announcement->due_date = $request->due_date;
         $announcement->type = $request->type;
-        $announcement->activity = $request->activity;
         $announcement->save();
 
-        return redirect("announcement");
+        return redirect()->back()->with('success', 'Duyuru  başarıyla güncellendi!');
     }
+
     public function add(Request $request)
     {
         $announcement = new AnnouncementModel();
@@ -33,10 +34,10 @@ class AnnouncementController extends Controller
         $announcement->content = $request->content;
         $announcement->due_date = $request->due_date;
         $announcement->type = $request->type;
-        $announcement->activity = $request->activity;
+        $announcement->activity = "1";
         $announcement->save();
 
-        return redirect("announcement");
+        return redirect()->back()->with('success', 'Duyuru başarıyla eklendi!');
     }
 
     public function delete(Request $request)
@@ -44,11 +45,23 @@ class AnnouncementController extends Controller
         $announcement = AnnouncementModel::find($request->id);
 
         if (!$announcement) {
-            return redirect()->route('admin_index')->with('error', 'Duyuru bulunamadı.');
+            return redirect()->back()->with('error', 'Duyuru bulunamadı.');
         }
 
         $announcement->delete();
 
-        return redirect()->route('announcement')->with('success', 'Duyuru başarıyla silindi.');
+        return redirect()->back()->with('success', 'Duyuru başarıyla silindi!');
+    }
+
+    // Yeni eklenen aktiflik güncelleme metodu
+    public function updateActivity(Request $request, $id)
+    {
+        $announcement = AnnouncementModel::find($id);
+
+        $announcement->activity = $request->has('activity') ? 1 : 0;
+
+        $announcement->save();
+
+        return redirect()->back()->with('success', 'Aktiflik durumu başarıyla güncellendi!');
     }
 }

@@ -50,7 +50,11 @@
             <!-- Navbar Start -->
             @include('admin_panel.part.navbar')
             <!-- Navbar End -->
-
+            @if(session('success'))
+            <div id="success-alert" class="alert alert-success mt-4">
+                {{ session('success') }}
+            </div>
+            @endif
 
             <!-- Quick Info Start -->
             @include('admin_panel.part.quickInfo')

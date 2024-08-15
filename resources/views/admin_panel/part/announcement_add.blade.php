@@ -26,10 +26,7 @@
                         <label for="addType" class="form-label">Tür</label>
                         <input type="text" class="form-control" id="addType" name="type" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="addActivity" class="form-label">Aktiflik</label>
-                        <input type="text" class="form-control" id="addActivity" name="activity" required>
-                    </div>
+
                     <button type="submit" class="btn btn-primary">Kaydet</button>
                 </form>
             </div>
@@ -46,7 +43,7 @@
                 document.getElementById('addDate').value = date;
                 document.getElementById('addContent').value = content;
                 document.getElementById('addType').value = type;
-                document.getElementById('addActivity').value = activity;
+
             });
         });
     });

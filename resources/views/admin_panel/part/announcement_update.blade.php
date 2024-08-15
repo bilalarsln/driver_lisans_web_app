@@ -26,10 +26,7 @@
                         <label for="editType" class="form-label">Tür</label>
                         <input type="text" class="form-control" id="editType" name="type" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="editActivity" class="form-label">Aktiflik</label>
-                        <input type="text" class="form-control" id="editActivity" name="activity" required>
-                    </div>
+
                     <button type="submit" class="btn btn-primary">Kaydet</button>
                 </form>
 
@@ -48,14 +45,13 @@
                 var content = this.getAttribute('data-content');
                 var date = this.getAttribute('data-date');
                 var type = this.getAttribute('data-type');
-                var activity = this.getAttribute('data-activity');
 
                 document.getElementById('editId').value = id;
                 document.getElementById('editTitle').value = title;
                 document.getElementById('editDate').value = date;
                 document.getElementById('editContent').value = content;
                 document.getElementById('editType').value = type;
-                document.getElementById('editActivity').value = activity;
+
             });
         });
     });

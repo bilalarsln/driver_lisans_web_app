@@ -5,6 +5,7 @@ $limitAnnouncements = $limitAnnouncements ?? false;
 $announcementLimit = $announcementLimit ?? 5;
 @endphp
 
+
 <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -43,6 +44,8 @@ $announcementLimit = $announcementLimit ?? 5;
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->due_date }}</td>
                         <td>{{ $data->type }}</td>
+
+
                         <td>
                             <button type="button" class="btn btn-warning edit-btn" data-id="{{ $data->id }}"
                                 data-title="{{ $data->title }}" data-date="{{ $data->due_date }}"
@@ -58,7 +61,16 @@ $announcementLimit = $announcementLimit ?? 5;
                                 Sil
                             </button>
                         </td>
-                        <td>{{ $data->activity }}</td>
+                        <td>
+                            <form action="{{ route('announcement.updateActivity', $data->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="activity" value="1"
+                                        onchange="this.form.submit()" {{ $data->activity ? 'checked' : '' }}>
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     <!-- announcement content end-->
@@ -83,3 +95,14 @@ $announcementLimit = $announcementLimit ?? 5;
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var successAlert = document.getElementById('success-alert');
+
+        if (successAlert) {
+            setTimeout(function() {
+                successAlert.style.display = 'none';
+            }, 5000); // 5000 milisaniye = 5 saniye
+        }
+    });
+</script>
