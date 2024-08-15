@@ -15,6 +15,10 @@
                         <input type="text" class="form-control" id="editTitle" name="title" required>
                     </div>
                     <div class="mb-3">
+                        <label for="editContent" class="form-label">İçerik</label>
+                        <input type="text" class="form-control" id="editContent" name="content" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="editDate" class="form-label">Tarih</label>
                         <input type="date" class="form-control" id="editDate" name="due_date" required>
                     </div>
@@ -34,3 +38,25 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var editButtons = document.querySelectorAll('.edit-btn');
+        editButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var id = this.getAttribute('data-id');
+                var title = this.getAttribute('data-title');
+                var content = this.getAttribute('data-content');
+                var date = this.getAttribute('data-date');
+                var type = this.getAttribute('data-type');
+                var activity = this.getAttribute('data-activity');
+
+                document.getElementById('editId').value = id;
+                document.getElementById('editTitle').value = title;
+                document.getElementById('editDate').value = date;
+                document.getElementById('editContent').value = content;
+                document.getElementById('editType').value = type;
+                document.getElementById('editActivity').value = activity;
+            });
+        });
+    });
+</script>

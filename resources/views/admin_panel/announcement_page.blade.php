@@ -51,27 +51,10 @@
             @include('admin_panel.part.navbar')
             <!-- Navbar End -->
 
-
-            <!-- Quick Info Start -->
-            @include('admin_panel.part.quickInfo')
-            <!-- Quick Info End -->
-
-
-            <!-- Graphics Start -->
-            @include('admin_panel.part.graphics')
-            <!-- Graphics End -->
-
             <!-- Announcement Start -->
-            @include('admin_panel.part.announcement',[
-            'showViewAllLink' => true,
-            'showAddButton' => false,
-            'limitAnnouncements' => true,
-            'announcementLimit' => 5
-            ])
+            @include('admin_panel.part.announcement', ['showViewAllLink' => false, 'showAddButton' => true])
             <!-- Announcement End-->
 
-            <!-- Warning -->
-            <!-- You should use pro version code here -->
 
             <!-- Footer Start -->
             @include('admin_panel.part.footer')

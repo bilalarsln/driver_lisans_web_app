@@ -26,3 +26,16 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var id = this.getAttribute('data-id');
+                var title = this.getAttribute('data-title');
+                document.getElementById('deleteTitle').value = title;
+                document.getElementById('deleteId').value = id;
+            });
+        });
+    });
+</script>

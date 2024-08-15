@@ -1,8 +1,24 @@
+@php
+$showViewAllLink = $showViewAllLink ?? true;
+$showAddButton = $showAddButton ?? false;
+$limitAnnouncements = $limitAnnouncements ?? false;
+$announcementLimit = $announcementLimit ?? 5;
+@endphp
+
 <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Duyurular</h6>
-            <a href="">Tümünü Gör</a>
+            <div>
+                @if($showAddButton)
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <i class="fas fa-plus"></i> Yeni Duyuru
+                </button>
+                @endif
+                @if($showViewAllLink)
+                <a href="/announcement" class="ms-2">Tümünü Gör</a>
+                @endif
+            </div>
         </div>
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -20,7 +36,9 @@
                 <!-- announcement title end -->
                 <tbody>
                     <!-- announcement content start -->
-                    @foreach ($announcement as $data)
+                    @foreach ($announcement->when($limitAnnouncements, function($query) use ($announcementLimit) {
+                    return $query->take($announcementLimit);
+                    }) as $data)
                     <tr>
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->due_date }}</td>
@@ -28,7 +46,7 @@
                         <td>
                             <button type="button" class="btn btn-warning edit-btn" data-id="{{ $data->id }}"
                                 data-title="{{ $data->title }}" data-date="{{ $data->due_date }}"
-                                data-type="{{ $data->type }}" data-activity="{{ $data->activity }}"
+                                data-type="{{ $data->type }}" data-activity="{{ $data->activity }}" data-content="{{$data->content}}"
                                 data-bs-toggle="modal" data-bs-target="#editModal">
                                 Düzenle
                             </button>
@@ -49,7 +67,12 @@
         </div>
     </div>
 </div>
+@if($showAddButton)
+<!-- Add Modal Start -->
+@include('admin_panel.part.announcement_add')
+<!-- Add Modal End -->
 
+@endif
 <!-- Edit Modal Start -->
 @include('admin_panel.part.announcement_update')
 <!-- Edit Modal End -->
@@ -60,36 +83,3 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom Script -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var editButtons = document.querySelectorAll('.edit-btn');
-        editButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var id = this.getAttribute('data-id');
-                var title = this.getAttribute('data-title');
-                var date = this.getAttribute('data-date');
-                var type = this.getAttribute('data-type');
-                var activity = this.getAttribute('data-activity');
-
-                document.getElementById('editId').value = id;
-                document.getElementById('editTitle').value = title;
-                document.getElementById('editDate').value = date;
-                document.getElementById('editType').value = type;
-                document.getElementById('editActivity').value = activity;
-            });
-        });
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-        var deleteButtons = document.querySelectorAll('.delete-btn');
-        deleteButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var id = this.getAttribute('data-id');
-                var title = this.getAttribute('data-title');
-                document.getElementById('deleteTitle').value = title;
-                document.getElementById('deleteId').value = id;
-            });
-        });
-    });
-</script>

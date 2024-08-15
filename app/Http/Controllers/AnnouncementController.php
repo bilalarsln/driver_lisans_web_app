@@ -8,18 +8,37 @@ use App\Models\AnnouncementModel;
 
 class AnnouncementController extends Controller
 {
-
+    public function announcement()
+    {
+        $announcement = AnnouncementModel::orderBy('due_date', 'desc')->get();
+        return view("admin_panel.announcement_page", compact('announcement'));
+    }
     public function update(Request $request)
     {
         $announcement = AnnouncementModel::find($request->id);
         $announcement->title = $request->title;
+        $announcement->content = $request->content;
         $announcement->due_date = $request->due_date;
         $announcement->type = $request->type;
         $announcement->activity = $request->activity;
         $announcement->save();
 
-        return redirect("admin_index");
+        return redirect("announcement");
     }
+    public function add(Request $request)
+    {
+        $announcement = new AnnouncementModel();
+
+        $announcement->title = $request->title;
+        $announcement->content = $request->content;
+        $announcement->due_date = $request->due_date;
+        $announcement->type = $request->type;
+        $announcement->activity = $request->activity;
+        $announcement->save();
+
+        return redirect("announcement");
+    }
+
     public function delete(Request $request)
     {
         $announcement = AnnouncementModel::find($request->id);
@@ -30,6 +49,6 @@ class AnnouncementController extends Controller
 
         $announcement->delete();
 
-        return redirect()->route('admin_index')->with('success', 'Duyuru başarıyla silindi.');
+        return redirect()->route('announcement')->with('success', 'Duyuru başarıyla silindi.');
     }
 }

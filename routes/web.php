@@ -17,7 +17,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin_index', [AdminController::class, 'admin_index'])->name('admin_index');
     Route::post('/announcementupdate', [AnnouncementController::class, 'update'])->name('announcementupdate');
     Route::post('/announcementdelete', [AnnouncementController::class, 'delete'])->name('announcementdelete');
-
+    Route::post('/announcementadd', [AnnouncementController::class, 'add'])->name('announcementadd');
+    Route::get('/announcement', [AnnouncementController::class, 'announcement'])->name('announcement');
 
     // Diğer admin route'ları
 });
