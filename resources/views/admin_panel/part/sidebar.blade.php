@@ -39,6 +39,9 @@
             <a href="chart.html" class="nav-item nav-link {{ Request::is('chart.html') ? 'active' : '' }}">
                 <i class="fa fa-chart-bar me-2"></i>Mesajlar
             </a>
+            <a href="/manager" class="nav-item nav-link {{ Request::is('chart.html') ? 'active' : '' }}">
+                <i class="fa fa-chart-bar me-2"></i>Yöneticiler
+            </a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <i class="far fa-file-alt me-2"></i>Sosyal Medya

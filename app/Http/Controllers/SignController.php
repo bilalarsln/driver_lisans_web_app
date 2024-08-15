@@ -29,14 +29,16 @@ class SignController extends Controller
         ]);
 
         $user = PanelUserModel::where('email', $request->email)->first();
-        $announcement = AnnouncementModel::all();
+        $announcement = AnnouncementModel::orderBy('due_date', 'desc')->get();
 
-        if ($user && $request->password == $user->password) { // $user'ı kontrol edin
+        if ($user && $request->password == $user->password) {
             Auth::login($user);
             Session::put('user_id', $user->id);
             Session::put('user_name', $user->name);
             Session::put('last_activity', now());
-            return view('admin_panel.admin_index', compact('user', 'announcement'));
+
+            // Doğrudan ana sayfaya yönlendirin
+            return view("admin_panel.admin_index", compact('announcement'));
         }
 
         return back()->withErrors([

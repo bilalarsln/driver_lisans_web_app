@@ -85,3 +85,6 @@
         </div>
     </div>
 </nav>
+<!-- Alert Start -->
+@include('component.alert')
+<!-- Alert Start -->

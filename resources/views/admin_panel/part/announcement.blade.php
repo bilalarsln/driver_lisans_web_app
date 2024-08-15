@@ -94,15 +94,3 @@ $announcementLimit = $announcementLimit ?? 5;
 <!-- Delete Modal End -->
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var successAlert = document.getElementById('success-alert');
-
-        if (successAlert) {
-            setTimeout(function() {
-                successAlert.style.display = 'none';
-            }, 5000); // 5000 milisaniye = 5 saniye
-        }
-    });
-</script>
