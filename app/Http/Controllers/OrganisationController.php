@@ -36,4 +36,18 @@ class OrganisationController extends Controller
         ];
         return view("admin_panel.organisation", compact('organisations', 'fieldNames'));
     }
+    public function update(Request $request, $id)
+    {
+        $organisation = OrganisationModel::findOrFail($id);
+        $key = $request->input('key');
+        $value = $request->input('value');
+
+        if (in_array($key, $organisation->getFillable()) || in_array($key, $organisation->getNullable())) {
+            $organisation->$key = $value;
+            $organisation->save();
+            return redirect()->back()->with('success', 'Bilgi başarıyla güncellendi.');
+        }
+
+        return redirect()->back()->with('error', 'Geçersiz alan.');
+    }
 }

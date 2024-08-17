@@ -27,5 +27,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/managerdelete', [ManagerController::class, 'delete'])->name('managerdelete');
     Route::post('/manageradd', [ManagerController::class, 'add'])->name('manageradd');
     Route::get('/organisation', [OrganisationController::class, 'organisation'])->name('organisation');
+    Route::put('/organisation/update/{id}', [OrganisationController::class, 'update'])->name('organisation.update');
     // Diğer admin route'ları
 });

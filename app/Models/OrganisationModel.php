@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrganisationModel extends Model
 {
     use HasFactory;
+
     protected $table = 'organisation';
 
     protected $fillable = [
@@ -18,24 +19,30 @@ class OrganisationModel extends Model
         'logo',
         'working_hours',
         'maps',
+        'student_number',
+        'teacher_number',
+        'vehicle_number',
+        'wp_contact',
     ];
+
     protected $nullable = [
         'phone_second',
         'organisation_phone',
-        'wp_contact',
+
         'instagram',
         'facebook',
         'x',
         'youtube',
         'app_store',
         'play_store',
-        'student_number',
-        'teacher_number',
-        'vehicle_number',
     ];
-
 
     public $timestamps = true;
 
     const UPDATED_AT = 'updated_at';
+
+    public function getNullable()
+    {
+        return $this->nullable;
+    }
 }
