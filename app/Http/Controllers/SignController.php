@@ -23,13 +23,40 @@ class SignController extends Controller
 
     public function signInPost(Request $request)
     {
+
+
+
+        /*
+        $val = Validator::make(
+            [
+                "rootid" => $rootid,
+                "sifre" => $sifre,
+            ],
+            [
+                "rootid" => 'required|exists:users,id',
+                "sifre" => 'required',
+            ],
+            [
+                "rootid.required" => 'Kullanıcı Bulunamadı',
+                "rootid.exists" => 'Kullanıcı Bulunamadı',
+                "sifre.required" => 'Şifre Gereklidir',
+            ]
+        );
+        if ($val->fails()) {
+            $hata = $val->errors()->first();
+            $durum = new stdClass();
+            $durum->State = 0;
+            $durum->Baslik = 'Hata';
+            $durum->Icerik = $hata;
+            return $durum;
+        }
+        */
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
 
         $user = PanelUserModel::where('email', $request->email)->first();
-        $announcement = AnnouncementModel::orderBy('due_date', 'desc')->get();
 
         if ($user && $request->password == $user->password) {
             Auth::login($user);
@@ -38,7 +65,7 @@ class SignController extends Controller
             Session::put('last_activity', now());
 
             // Doğrudan ana sayfaya yönlendirin
-            return view("admin_panel.admin_index", compact('announcement'));
+            return redirect()->route("admin_index");
         }
 
         return back()->withErrors([

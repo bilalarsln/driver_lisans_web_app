@@ -9,7 +9,7 @@
         <input class="form-control border-0" type="search" placeholder="Search">
     </form>
     <div class="navbar-nav align-items-center ms-auto">
-        <div class="nav-item dropdown">
+        <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class="fa fa-envelope me-lg-2"></i>
                 <span class="d-none d-lg-inline-flex">Message</span>
@@ -47,7 +47,7 @@
                 <hr class="dropdown-divider">
                 <a href="#" class="dropdown-item text-center">See all message</a>
             </div>
-        </div>
+        </div> -->
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class="fa fa-bell me-lg-2"></i>

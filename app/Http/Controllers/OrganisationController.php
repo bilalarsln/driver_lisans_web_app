@@ -11,7 +11,7 @@ class OrganisationController extends Controller
     {
 
         $organisations = OrganisationModel::all();
-
+        $organisation_name = OrganisationModel::first();
         // Veritabanı alanlarını kullanıcı dostu isimlerle eşle
         $fieldNames = [
             'name' => 'Kurum Adı',
@@ -34,7 +34,7 @@ class OrganisationController extends Controller
             'teacher_number' => 'Öğretmen Sayısı',
             'vehicle_number' => 'Araç Sayısı',
         ];
-        return view("admin_panel.organisation", compact('organisations', 'fieldNames'));
+        return view("admin_panel.organisation", compact('organisations', 'organisation_name', 'fieldNames'));
     }
     public function update(Request $request, $id)
     {

@@ -5,7 +5,6 @@ $limitAnnouncements = $limitAnnouncements ?? false;
 $announcementLimit = $announcementLimit ?? 5;
 @endphp
 
-
 <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -22,7 +21,7 @@ $announcementLimit = $announcementLimit ?? 5;
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
+            <table id="example" class="display">
                 <!-- announcement title start -->
                 <thead>
                     <tr class="text-dark">
@@ -79,6 +78,12 @@ $announcementLimit = $announcementLimit ?? 5;
         </div>
     </div>
 </div>
+<script>
+    // table kodu 
+    let table = new DataTable('#example', {
+
+    });
+</script>
 @if($showAddButton)
 <!-- Add Modal Start -->
 @include('admin_panel.part.announcement_add')

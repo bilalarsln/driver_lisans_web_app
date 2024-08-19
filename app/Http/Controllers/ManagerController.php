@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrganisationModel;
 use App\Models\PanelUserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -10,10 +11,11 @@ class ManagerController extends Controller
 {
     public function manager()
     {
+        $organisation_name = OrganisationModel::first();
         $user_id = Session::get('user_id');
         if ($user_id == 1) {
             $panel_user = PanelUserModel::all();
-            return view("admin_panel.manager", compact('panel_user'));
+            return view("admin_panel.manager", compact('panel_user', 'organisation_name'));
         } else {
             $panel_user = PanelUserModel::find($user_id);
             if ($panel_user) {

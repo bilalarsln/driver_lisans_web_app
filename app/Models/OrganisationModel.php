@@ -28,7 +28,6 @@ class OrganisationModel extends Model
     protected $nullable = [
         'phone_second',
         'organisation_phone',
-
         'instagram',
         'facebook',
         'x',

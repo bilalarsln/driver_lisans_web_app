@@ -12,9 +12,10 @@ Auth::routes();
 
 Route::get('/login', [SignController::class, 'login'])->name("login");
 Route::post('/signinPost', [SignController::class, 'signInPost'])->name("signInPost");
-Route::get('/signout', [SignController::class, 'signout'])->name('signout');
+
 
 Route::middleware(['auth'])->group(function () {
+
     Route::get('/', [AdminController::class, 'admin_index'])->name('admin_index');
     Route::get('/admin_index', [AdminController::class, 'admin_index'])->name('admin_index');
     Route::post('/announcementupdate', [AnnouncementController::class, 'update'])->name('announcementupdate');
@@ -28,5 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/manageradd', [ManagerController::class, 'add'])->name('manageradd');
     Route::get('/organisation', [OrganisationController::class, 'organisation'])->name('organisation');
     Route::put('/organisation/update/{id}', [OrganisationController::class, 'update'])->name('organisation.update');
-    // Diğer admin route'ları
+
+    /* çıkış işlemleri */
+    Route::get('/signout', [SignController::class, 'signout'])->name('signout');
 });

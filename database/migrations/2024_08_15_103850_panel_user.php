@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('panel_user', function (Blueprint $table) {
-            $table->id();
+            $table->tinyIncrements("id");
             $table->string('name');
             $table->string('surname');
             $table->string('phone')->unique();
