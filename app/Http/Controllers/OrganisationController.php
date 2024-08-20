@@ -41,6 +41,15 @@ class OrganisationController extends Controller
         $organisation = OrganisationModel::findOrFail($id);
         $key = $request->input('key');
         $value = $request->input('value');
+        if ($key === 'logo' && $request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/logos', $filename);
+            $organisation->logo = 'storage/logos/' . $filename;
+            $organisation->save();
+
+            return redirect()->back()->with('success', 'Logo başarıyla güncellendi.');
+        }
 
         if (in_array($key, $organisation->getFillable()) || in_array($key, $organisation->getNullable())) {
             $organisation->$key = $value;
