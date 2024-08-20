@@ -18,27 +18,35 @@
 
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <ul class="list-group list-group-horizontal w-100 ">
+                    <ul class="list-group list-group-horizontal w-100">
                         <li class="list-group-item" style="width: 40%;"><b>Özellik</b></li>
                         <li class="list-group-item" style="width: 50%;"><b>Değeri</b></li>
-                        <li class="list-group-item text-center" style="width: 10%;">
-                            <b>İşlem</b>
-                        </li>
+                        <li class="list-group-item text-center" style="width: 10%;"><b>İşlem</b></li>
                     </ul>
                     @foreach ($organisations as $organisation)
                     @foreach ($fieldNames as $key => $label)
-                    <ul class="list-group list-group-horizontal w-100 ">
+                    <ul class="list-group list-group-horizontal w-100">
                         <li class="list-group-item" style="width: 40%;">{{ $label }}</li>
-                        <li class="list-group-item" style="width: 50%;">
+                        <li class="list-group-item d-flex align-items-center" style="width: 50%;">
+                            @if ($key === 'logo')
+                            <input type="text" class="form-control me-2" value="{{ $organisation->logo ? basename($organisation->logo) : 'Logo yüklenmedi' }}" readonly>
+                            @else
                             <input type="text" id="input-{{ $key }}" class="form-control" value="{{ $organisation->$key }}" readonly>
+                            @endif
                         </li>
                         <li class="list-group-item d-flex justify-content-center align-items-center p-0" style="width: 10%;">
-                            <button type="button" id="edit-btn-{{ $key }}" class="btn btn-primary btn-sm" onclick="enableEdit('{{ $key }}')">
-                                Düzenle
-                            </button>
-                            <button type="button" id="save-btn-{{ $key }}" class="btn btn-success btn-sm d-none" onclick="saveEdit('{{ $key }}', '{{ $organisation->id }}')">
-                                Kaydet
-                            </button>
+                            @if ($key === 'logo')
+                            <!-- Dosya yükleme ve kaydetme işlemleri için tek bir buton -->
+                            <form action="/organisation/update/logo/{{ $organisation->id }}" method="POST" enctype="multipart/form-data" class="d-flex align-items-center">
+                                @csrf
+                                @method('PUT')
+                                <input type="file" name="logo" accept=".png,.jpg,.jpeg,.csv" class="form-control d-none" id="logo-file-{{ $organisation->id }}" onchange="this.form.submit()">
+                                <label for="logo-file-{{ $organisation->id }}" class="btn btn-primary btn-sm mb-0">Düzenle</label>
+                            </form>
+                            @else
+                            <button type="button" id="edit-btn-{{ $key }}" class="btn btn-primary btn-sm" onclick="enableEdit('{{ $key }}')">Düzenle</button>
+                            <button type="button" id="save-btn-{{ $key }}" class="btn btn-success btn-sm d-none" onclick="saveEdit('{{ $key }}', '{{ $organisation->id }}')">Kaydet</button>
+                            @endif
                         </li>
                     </ul>
                     @endforeach
@@ -52,7 +60,6 @@
 
         </div>
         <!-- Content End -->
-
 
         <!-- Back to Top -->
         @include('component.backToTop')

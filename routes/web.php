@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/manageradd', [ManagerController::class, 'add'])->name('manageradd');
     Route::get('/organisation', [OrganisationController::class, 'organisation'])->name('organisation');
     Route::put('/organisation/update/{id}', [OrganisationController::class, 'update'])->name('organisation.update');
+    Route::put('/organisation/update/logo/{id}', [OrganisationController::class, 'updateLogo'])->name('organisation.updateLogo');
+
 
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');

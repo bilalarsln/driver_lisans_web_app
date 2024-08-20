@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\OrganisationModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OrganisationController extends Controller
 {
@@ -49,5 +50,32 @@ class OrganisationController extends Controller
         }
 
         return redirect()->back()->with('error', 'Geçersiz alan.');
+    }
+    public function updateLogo(Request $request, $id)
+    {
+        // Geçerli dosya türlerini kontrol et
+        $request->validate([
+            'logo' => 'required|mimes:png,jpg,jpeg,csv|max:2048', // Maksimum dosya boyutunu da belirleyebilirsiniz
+        ]);
+
+        // İlgili organizasyonu bul
+        $organisation = OrganisationModel::findOrFail($id);
+
+        // Yeni logo dosyasını yükle
+        if ($request->hasFile('logo')) {
+            // Eski logoyu sil
+            if ($organisation->logo) {
+                Storage::delete($organisation->logo);
+            }
+
+            // Yeni dosyayı kaydet
+            $path = $request->file('logo')->store('logos');
+
+            // Organizasyon logosunu güncelle
+            $organisation->logo = $path;
+            $organisation->save();
+        }
+
+        return redirect()->back()->with('success', 'Logo başarıyla güncellendi.');
     }
 }
