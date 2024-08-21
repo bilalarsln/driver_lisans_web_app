@@ -62,27 +62,25 @@ class OrganisationController extends Controller
     }
     public function updateLogo(Request $request, $id)
     {
-        // Geçerli dosya türlerini kontrol et
+        // Dosya yükleme işlemi için doğrulama
         $request->validate([
-            'logo' => 'required|mimes:png,jpg,jpeg,csv|max:2048', // Maksimum dosya boyutunu da belirleyebilirsiniz
+            'logo' => 'required|mimes:png,jpg,jpeg,csv|max:1024',
         ]);
 
         // İlgili organizasyonu bul
         $organisation = OrganisationModel::findOrFail($id);
 
-        // Yeni logo dosyasını yükle
+        // Dosya yükleme işlemi
         if ($request->hasFile('logo')) {
-            // Eski logoyu sil
+            // Eski logoyu silme (eğer varsa)
             if ($organisation->logo) {
                 Storage::delete($organisation->logo);
             }
 
-            // Yeni dosyayı kaydet
-            $path = $request->file('logo')->store('logos');
-
-            // Organizasyon logosunu güncelle
-            $organisation->logo = $path;
-            $organisation->save();
+            // Yeni dosyayı yükleme
+            $path = $request->file('logo')->store('public/logos'); // 'public/logos' dizinine kaydedilecek
+            $organisation->logo = $path; // Dosya yolunu veritabanında sakla
+            $organisation->save(); // Veritabanındaki organizasyonu güncelle
         }
 
         return redirect()->back()->with('success', 'Logo başarıyla güncellendi.');
