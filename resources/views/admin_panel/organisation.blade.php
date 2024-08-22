@@ -53,11 +53,9 @@
                     @endforeach
                 </div>
             </div>
-
             <!-- Footer Start -->
             @include('admin_panel.part.footer')
             <!-- Footer End -->
-
         </div>
         <!-- Content End -->
 
@@ -120,7 +118,6 @@
             form.submit();
         }
     </script>
-
 </body>
 @include('layouts.script')
 

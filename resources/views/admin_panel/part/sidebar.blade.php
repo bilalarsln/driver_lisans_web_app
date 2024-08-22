@@ -26,8 +26,8 @@
             <a href="/organisation" class="nav-item nav-link {{ Request::is('organisation') ? 'active' : '' }}">
                 <i class="fa fa-table me-2"></i>Kurum Bilgisi
             </a>
-            <a href="chart.html" class="nav-item nav-link {{ Request::is('chart.html') ? 'active' : '' }}">
-                <i class="fa fa-chart-bar me-2"></i>Mesajlar
+            <a href="/substation" class="nav-item nav-link {{ Request::is('substation') ? 'active' : '' }}">
+                <i class="fa fa-chart-bar me-2"></i>Şubeler
             </a>
             <a href="/manager" class="nav-item nav-link {{ Request::is('manager') ? 'active' : '' }}">
                 <i class="fa fa-users me-2"></i>Yöneticiler

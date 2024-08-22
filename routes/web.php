@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\SubstationController;
 
 Auth::routes();
 
@@ -30,7 +31,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/organisation', [OrganisationController::class, 'organisation'])->name('organisation');
     Route::put('/organisation/update/{id}', [OrganisationController::class, 'update'])->name('organisation.update');
     Route::put('/organisation/update/logo/{id}', [OrganisationController::class, 'updateLogo'])->name('organisation.updateLogo');
-
+    Route::get('/substation', [SubstationController::class, 'substation'])->name('substation');
+    Route::post('/substationadd', [SubstationController::class, 'add'])->name('substationadd');
+    Route::post('/substationupdate', [SubstationController::class, 'update'])->name('substationupdate');
+    Route::post('/substationdelete', [SubstationController::class, 'delete'])->name('substationdelete');
 
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');
