@@ -8,6 +8,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\SubstationController;
+use App\Http\Controllers\ImportandInformationController;
 
 Auth::routes();
 
@@ -35,6 +36,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/substationadd', [SubstationController::class, 'add'])->name('substationadd');
     Route::post('/substationupdate', [SubstationController::class, 'update'])->name('substationupdate');
     Route::post('/substationdelete', [SubstationController::class, 'delete'])->name('substationdelete');
+    Route::post('/importand_informationupdate', [ImportandInformationController::class, 'update'])->name('importand_informationupdate');
+    Route::post('/importand_informationdelete', [ImportandInformationController::class, 'delete'])->name('importand_informationdelete');
+    Route::post('/importand_informationadd', [ImportandInformationController::class, 'add'])->name('importand_informationadd');
+    Route::get('/importand_information', [ImportandInformationController::class, 'importand_information'])->name('importand_information');
+    Route::put('/importand_information/{id}/activity', [ImportandInformationController::class, 'updateActivity'])->name('importand_information.updateActivity');
+
 
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');
