@@ -86,16 +86,16 @@ $announcementLimit = $announcementLimit ?? 5;
 </script>
 @if($showAddButton)
 <!-- Add Modal Start -->
-@include('admin_panel.part.announcement_add')
+@include('admin_panel.part.announcement_part.announcement_add')
 <!-- Add Modal End -->
 
 @endif
 <!-- Edit Modal Start -->
-@include('admin_panel.part.announcement_update')
+@include('admin_panel.part.announcement_part.announcement_update')
 <!-- Edit Modal End -->
 
 <!-- Delete Modal Start -->
-@include('admin_panel.part.announcement_delete')
+@include('admin_panel.part.announcement_part.announcement_delete')
 <!-- Delete Modal End -->
 
 <!-- Bootstrap JS -->

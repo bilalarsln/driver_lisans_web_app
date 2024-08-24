@@ -61,15 +61,15 @@
         @include('component.backToTop')
     </div>
     <!-- Add Modal Start -->
-    @include('admin_panel.part.substation_add')
+    @include('admin_panel.part.substation_part.substation_add')
     <!-- Add Modal End -->
 
     <!-- Edit Modal Start -->
-    @include('admin_panel.part.substation_update')
+    @include('admin_panel.part.substation_part.substation_update')
     <!-- Edit Modal End -->
 
     <!-- Delete Modal Start -->
-    @include('admin_panel.part.substation_delete')
+    @include('admin_panel.part.substation_part.substation_delete')
     <!-- Delete Modal End -->
 
 </body>

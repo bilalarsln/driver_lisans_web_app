@@ -92,9 +92,9 @@
                     </div>
                 </div>
             </div>
-            @include('admin_panel.part.manager_add')
-            @include('admin_panel.part.manager_update')
-            @include('admin_panel.part.manager_delete')
+            @include('admin_panel.part.manager_part.manager_add')
+            @include('admin_panel.part.manager_part.manager_update')
+            @include('admin_panel.part.manager_part.manager_delete')
             <!-- Footer Start -->
             @include('admin_panel.part.footer')
             <!-- Footer End -->

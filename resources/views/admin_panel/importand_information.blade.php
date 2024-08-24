@@ -88,15 +88,15 @@
             </script>
 
             <!-- Add Modal Start -->
-            @include('admin_panel.part.importand_informationadd')
+            @include('admin_panel.part.importand_information_part.importand_informationadd')
             <!-- Add Modal End -->
 
             <!-- Edit Modal Start -->
-            @include('admin_panel.part.importand_informationupdate')
+            @include('admin_panel.part.importand_information_part.importand_informationupdate')
             <!-- Edit Modal End -->
 
             <!-- Delete Modal Start -->
-            @include('admin_panel.part.importand_informationdelete')
+            @include('admin_panel.part.importand_information_part.importand_informationdelete')
             <!-- Delete Modal End -->
 
             <!-- Footer Start -->

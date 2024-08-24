@@ -26,7 +26,7 @@
             <!-- Graphics End -->
 
             <!-- Announcement Start -->
-            @include('admin_panel.part.announcement',[
+            @include('admin_panel.part.announcement_part.announcement',[
             'showViewAllLink' => true,
             'showAddButton' => false,
             'limitAnnouncements' => true,

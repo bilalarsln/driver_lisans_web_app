@@ -20,8 +20,8 @@
             <a href="/announcement" class="nav-item nav-link {{ Request::is('announcement') ? 'active' : '' }}">
                 <i class="fa fa-th me-2"></i>Duyurular
             </a>
-            <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">
-                <i class="fa fa-keyboard me-2"></i>Dersler
+            <a href="/importand_information" class="nav-item nav-link {{ Request::is('importand_information') ? 'active' : '' }}">
+                <i class="fa fa-keyboard me-2"></i>Önemli Bilgiler
             </a>
             <a href="/organisation" class="nav-item nav-link {{ Request::is('organisation') ? 'active' : '' }}">
                 <i class="fa fa-table me-2"></i>Kurum Bilgisi

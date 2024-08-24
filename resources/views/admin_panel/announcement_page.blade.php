@@ -17,7 +17,7 @@
             <!-- Navbar End -->
 
             <!-- Announcement Start -->
-            @include('admin_panel.part.announcement', ['showViewAllLink' => false, 'showAddButton' => true])
+            @include('admin_panel.part.announcement_part.announcement', ['showViewAllLink' => false, 'showAddButton' => true])
             <!-- Announcement End-->
 
 
