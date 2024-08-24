@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addForm" action="{{ route('substationadd') }}" method="POST">
+                <form id="addForm" action="{{ route('substationadd') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="addSubstation_photo" class="form-label">Fotoğraf</label>
-                        <input type="text" class="form-control" id="addSubstation_photo" name="substation_photo" required>
+                        <input type="file" name="substation_photo" accept=".png,.jpg,.jpeg,.csv" class="form-control" id="addSubstation_photo">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Kaydet</button>

@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm" action="{{ route('substationupdate') }}" method="POST">
+                <form id="editForm" action="{{ route('substationupdate') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="editId">
                     <div class="mb-3">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="editSubstation_photo" class="form-label">Fotoğraf</label>
-                        <input type="text" class="form-control" id="editSubstation_photo" name="substation_photo" required>
+                        <input type="file" name="substation_photo" accept=".png,.jpg,.jpeg,.csv" class="form-control" id="editSubstation_photo">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -48,14 +48,15 @@
                 var phone = this.getAttribute('data-phone');
                 var address = this.getAttribute('data-address');
                 var maps = this.getAttribute('data-maps');
-                var substation_photo = this.getAttribute('data-substation_photo');
 
                 document.getElementById('editId').value = id;
                 document.getElementById('editSubstation_name').value = substation_name;
                 document.getElementById('editAddress').value = address;
                 document.getElementById('editPhone').value = phone;
                 document.getElementById('editMaps').value = maps;
-                document.getElementById('editSubstation_photo').value = substation_photo;
+
+                // Fotoğraf alanını boş bırakın, çünkü kullanıcı yeni bir fotoğraf seçmek zorunda.
+                document.getElementById('editSubstation_photo').value = '';
             });
         });
     });

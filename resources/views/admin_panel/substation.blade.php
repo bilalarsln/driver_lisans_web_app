@@ -27,26 +27,24 @@
                 <div class="row justify-content-center align-items-start p-3">
                     @foreach($substation as $data)
                     <div class="col-md-5 col-sm-11 col-lg-5">
-                        <div class="bg-light rounded h-100 p-4 text-center">
-                            <img class="img-fluid rounded-circle mx-auto mb-4" src="img/{{$data->substation_photo}}" style="width: 100px; height: 100px;">
+                        <div class="bg-light rounded h-100 p-4 m-2 text-center">
+                            <img class="img-fluid rounded-circle mx-auto mb-4" src="{{$data->substation_photo}}" style="width: 100px; height: 100px;">
                             <h5 class="mb-1">{{$data->substation_name}}</h5>
-                            <p>{{$data->address}}</p>
-                            <p class="mb-0">{{$data->phone}}</p>
+
                             <div class="row d-flex justify-content-end align-items-end">
-                                <div class="col-3">
-                                    <button type="button" class="btn btn-primary edit-btn " data-id="{{ $data->id }}"
-                                        data-substation_name="{{ $data->substation_name }}" data-phone="{{ $data->phone }}"
-                                        data-address="{{ $data->address }}" data-substation_photo="{{ $data->substation_photo }}" data-maps="{{ $data->maps }}"
-                                        data-bs-toggle="modal" data-bs-target="#editModal">
-                                        Düzenle
-                                    </button>
-                                </div>
-                                <div class="col-3">
-                                    <button type="button" class="btn btn-primary delete-btn" data-id="{{ $data->id }}"
-                                        data-substation_name="{{ $data->substation_name }}" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                        Sil
-                                    </button>
-                                </div>
+
+                                <button type="button" class="btn btndark m-2 btn-square edit-btn " data-id="{{ $data->id }}"
+                                    data-substation_name="{{ $data->substation_name }}" data-phone="{{ $data->phone }}"
+                                    data-address="{{ $data->address }}" data-substation_photo="{{ $data->substation_photo }}" data-maps="{{ $data->maps }}"
+                                    data-bs-toggle="modal" data-bs-target="#editModal">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+
+                                <button type="button" class="btn btndark m-2 btn-square delete-btn" data-id="{{ $data->id }}"
+                                    data-substation_name="{{ $data->substation_name }}" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
                             </div>
                         </div>
                     </div>
