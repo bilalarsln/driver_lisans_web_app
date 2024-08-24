@@ -29,41 +29,40 @@
                     </div>
                     <div class="table-responsive">
                         <table id="example" class="display">
-                            <!-- İmportand information title start -->
+                            <!-- Test title start -->
                             <thead>
                                 <tr class="text-dark">
-                                    <th scope="col">Başlık</th>
-                                    <th scope="col">İçerik</th>
-
+                                    <th scope="col">Ad</th>
+                                    <th scope="col">Açıklama</th>
                                     <th scope="col">Düzenle</th>
                                     <th scope="col">Sil</th>
                                     <th scope="col">Aktiflik</th>
                                 </tr>
                             </thead>
-                            <!-- İmportand information title end -->
+                            <!-- Test title end -->
                             <tbody>
-                                <!-- İmportand information content start -->
-                                @foreach ($importand_information as $data)
+                                <!-- Test content start -->
+                                @foreach ($test as $data)
                                 <tr>
-                                    <td>{{ $data->title }}</td>
-                                    <td>{{ $data->content }}</td>
+                                    <td>{{ $data->name }}</td>
+                                    <td>{{ $data->explanation }}</td>
                                     <td>
                                         <button type="button" class="btn btn-warning edit-btn" data-id="{{ $data->id }}"
-                                            data-title="{{ $data->title }}"
-                                            data-activity="{{ $data->activity }}" data-content="{{$data->content}}"
+                                            data-name="{{ $data->name }}"
+                                            data-activity="{{ $data->activity }}" data-explanation="{{$data->explanation}}"
                                             data-bs-toggle="modal" data-bs-target="#editModal">
                                             Düzenle
                                         </button>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-warning delete-btn" data-id="{{ $data->id }}"
-                                            data-title="{{ $data->title }}"
+                                            data-name="{{ $data->name }}"
                                             data-bs-toggle="modal" data-bs-target="#deleteModal">
                                             Sil
                                         </button>
                                     </td>
                                     <td>
-                                        <form action="{{ route('importand_information.updateActivity', $data->id) }}" method="POST">
+                                        <form action="{{ route('test.updateActivity', $data->id) }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                             <div class="form-check form-switch">
@@ -74,7 +73,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                                <!-- İmportand information content end-->
+                                <!-- Test content end-->
                             </tbody>
                         </table>
                     </div>
@@ -88,15 +87,15 @@
             </script>
 
             <!-- Add Modal Start -->
-            @include('admin_panel.part.importand_information_part.importand_informationadd')
+            @include('admin_panel.part.test_part.testadd')
             <!-- Add Modal End -->
 
             <!-- Edit Modal Start -->
-            @include('admin_panel.part.importand_information_part.importand_informationupdate')
+            @include('admin_panel.part.test_part.testupdate')
             <!-- Edit Modal End -->
 
             <!-- Delete Modal Start -->
-            @include('admin_panel.part.importand_information_part.importand_informationdelete')
+            @include('admin_panel.part.test_part.testdelete')
             <!-- Delete Modal End -->
 
             <!-- Footer Start -->

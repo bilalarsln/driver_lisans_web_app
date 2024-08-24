@@ -10,6 +10,7 @@ use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\SubstationController;
 use App\Http\Controllers\ImportandInformationController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\TestController;
 
 Auth::routes();
 
@@ -53,6 +54,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/resourceadd', [ResourceController::class, 'add'])->name('resourceadd');
     Route::get('/resource', [ResourceController::class, 'resource'])->name('resource');
     Route::put('/resource/{id}/activity', [ResourceController::class, 'updateActivity'])->name('resource.updateActivity');
+    /*Test */
+    Route::post('/testupdate', [TestController::class, 'update'])->name('testupdate');
+    Route::post('/testdelete', [TestController::class, 'delete'])->name('testdelete');
+    Route::post('/testadd', [TestController::class, 'add'])->name('testadd');
+    Route::get('/test', [TestController::class, 'test'])->name('test');
+    Route::put('/test/{id}/activity', [TestController::class, 'updateActivity'])->name('test.updateActivity');
 
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');

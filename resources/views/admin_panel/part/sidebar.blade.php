@@ -26,6 +26,9 @@
             <a href="/resource" class="nav-item nav-link {{ Request::is('resource') ? 'active' : '' }}">
                 <i class="fa fa-users me-2"></i>Kaynaklar
             </a>
+            <a href="/test" class="nav-item nav-link {{ Request::is('test') ? 'active' : '' }}">
+                <i class="fa fa-chart-bar me-2"></i>Testler
+            </a>
             <a href="/organisation" class="nav-item nav-link {{ Request::is('organisation') ? 'active' : '' }}">
                 <i class="fa fa-table me-2"></i>Kurum Bilgisi
             </a>
