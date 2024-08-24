@@ -23,6 +23,9 @@
             <a href="/importand_information" class="nav-item nav-link {{ Request::is('importand_information') ? 'active' : '' }}">
                 <i class="fa fa-keyboard me-2"></i>Önemli Bilgiler
             </a>
+            <a href="/resource" class="nav-item nav-link {{ Request::is('resource') ? 'active' : '' }}">
+                <i class="fa fa-users me-2"></i>Kaynaklar
+            </a>
             <a href="/organisation" class="nav-item nav-link {{ Request::is('organisation') ? 'active' : '' }}">
                 <i class="fa fa-table me-2"></i>Kurum Bilgisi
             </a>
