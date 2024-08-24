@@ -26,8 +26,6 @@
 
                     <button type="submit" class="btn btn-primary">Kaydet</button>
                 </form>
-
-
             </div>
         </div>
     </div>
