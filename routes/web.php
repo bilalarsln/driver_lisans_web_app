@@ -11,6 +11,7 @@ use App\Http\Controllers\SubstationController;
 use App\Http\Controllers\ImportandInformationController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UnitController;
 
 Auth::routes();
 
@@ -60,7 +61,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/testadd', [TestController::class, 'add'])->name('testadd');
     Route::get('/test', [TestController::class, 'test'])->name('test');
     Route::put('/test/{id}/activity', [TestController::class, 'updateActivity'])->name('test.updateActivity');
-
+    /*Ünite */
+    Route::post('/unitupdate', [UnitController::class, 'update'])->name('unitupdate');
+    Route::post('/unitdelete', [UnitController::class, 'delete'])->name('unitdelete');
+    Route::post('/unitadd', [UnitController::class, 'add'])->name('unitadd');
+    Route::get('/unit', [UnitController::class, 'unit'])->name('unit');
+    Route::put('/unit/{id}/activity', [UnitController::class, 'updateActivity'])->name('unit.updateActivity');
     /* çıkış işlemleri */
     Route::get('/signout', [SignController::class, 'signout'])->name('signout');
 });
