@@ -11,11 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unit', function (Blueprint $table) {
+        Schema::create('question', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('test_id');
-            $table->string('activity');
+            $table->string('question_number');
+            $table->string('question_text');
+            $table->string('choice_1');
+            $table->string('choice_2');
+            $table->string('choice_3');
+            $table->string('choice_4');
+            $table->string('correct_answer');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

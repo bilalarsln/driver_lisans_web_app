@@ -19,7 +19,7 @@ class ManagerController extends Controller
         } else {
             $panel_user = PanelUserModel::find($user_id);
             if ($panel_user) {
-                return view("admin_panel.manager", compact('panel_user'));
+                return view("admin_panel.manager", compact('panel_user', 'organisation_name'));
             }
         }
     }
@@ -54,7 +54,7 @@ class ManagerController extends Controller
     {
         $panel_user = PanelUserModel::find($request->id);
 
-        if (!$panel_user) {
+        if (!$panel_user || $request->id == 1) {
             return redirect()->back()->with('error', 'Yönetici hesabı bulunamadı.');
         }
 
