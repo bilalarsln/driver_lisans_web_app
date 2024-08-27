@@ -12,27 +12,27 @@
                     <!-- Soru alanları -->
                     <div class="mb-3">
                         <label for="question_text" class="form-label">Soru Metni</label>
-                        <input type="text" class="form-control" id="question_text" name="question_text" required>
+                        <input type="text" class="form-control" id="addQuestion_text" name="question_text" required>
                     </div>
                     <div class="mb-3">
                         <label for="choice_1" class="form-label">Seçenek 1</label>
-                        <input type="text" class="form-control" id="choice_1" name="choice_1" required>
+                        <input type="text" class="form-control" id="addChoice_1" name="choice_1" required>
                     </div>
                     <div class="mb-3">
                         <label for="choice_2" class="form-label">Seçenek 2</label>
-                        <input type="text" class="form-control" id="choice_2" name="choice_2" required>
+                        <input type="text" class="form-control" id="addChoice_2" name="choice_2" required>
                     </div>
                     <div class="mb-3">
                         <label for="choice_3" class="form-label">Seçenek 3</label>
-                        <input type="text" class="form-control" id="choice_3" name="choice_3" required>
+                        <input type="text" class="form-control" id="addChoice_3" name="choice_3" required>
                     </div>
                     <div class="mb-3">
                         <label for="choice_4" class="form-label">Seçenek 4</label>
-                        <input type="text" class="form-control" id="choice_4" name="choice_4" required>
+                        <input type="text" class="form-control" id="addChoice_4" name="choice_4" required>
                     </div>
                     <div class="mb-3">
                         <label for="correct_answer" class="form-label">Doğru Cevap</label>
-                        <input type="text" class="form-control" id="correct_answer" name="correct_answer" required>
+                        <input type="text" class="form-control" id="addCorrect_answer" name="correct_answer" required>
                     </div>
                     <!-- Gizli input ile test_id gönder -->
                     <input type="hidden" id="addTest_id" name="test_id" value="{{ $testId }}">

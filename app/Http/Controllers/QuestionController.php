@@ -19,28 +19,29 @@ class QuestionController extends Controller
         return view("admin_panel.question", compact('organisation_name', 'questions', 'id'));
     }
 
+    public function update(Request $request)
+    {
+        $question = QuestionModel::find($request->id);
+        $question->question_text = $request->question_text;
+        $question->choice_1 = $request->choice_1;
+        $question->choice_2 = $request->choice_2;
+        $question->choice_3 = $request->choice_3;
+        $question->choice_4 = $request->choice_4;
+        $question->correct_answer = $request->correct_answer;
+        $question->save();
 
-
-    // public function update(Request $request)
-    // {
-    //     $question = QuestionModel::find($request->id);
-    //     $question->name = $request->name;
-    //     $question->phone = $request->phone;
-    //     $question->address = $request->address;
-    //     $question->maps = $request->maps;
-    //     $question->save();
-
-    //     return redirect()->back()->with('success', 'Şube  başarıyla güncellendi!');
-    // }
-    // public function delete(Request $request)
-    // {
-    //     $question = QuestionModel::find($request->id);
-    //     if (!$question) {
-    //         return redirect()->back()->with('error', 'Şube bulunamadı.');
-    //     }
-    //     $question->delete();
-    //     return redirect()->back()->with('success', 'Şube başarıyla silindi!');
-    // }
+        return redirect()->back()->with('success', 'Soru  başarıyla güncellendi!');
+    }
+    public function delete(Request $request)
+    {
+        $question = QuestionModel::find($request->id);
+        if (!$question) {
+            return redirect()->back()->with('error', 'Soru bulunamadı.');
+        }
+        $question->delete();
+        TestQuestionModel::where('question_id', $question->id)->delete();
+        return redirect()->back()->with('success', 'Soru başarıyla silindi!');
+    }
     public function add(Request $request)
     {
         $question = new QuestionModel();

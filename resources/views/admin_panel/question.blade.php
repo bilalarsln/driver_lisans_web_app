@@ -25,10 +25,30 @@
             <div class="row" style="min-height: 100vh;">
 
                 <div class="row justify-content-center align-items-start p-3">
-                    @foreach ($questions as $question)
-                    <p>{{ $question->question_text}}</p>
-                    @endforeach
+                    @foreach($questions as $data)
+                    <div class="col-md-5 col-sm-11 col-lg-5">
+                        <div class="bg-light rounded h-100 p-4 m-2 text-center">
 
+                            <h5 class="mb-1">{{$data->question_text}}</h5>
+
+                            <div class="row d-flex justify-content-end align-items-end">
+
+                                <button type="button" class="btn btndark m-2 btn-square edit-btn " data-id="{{ $data->id }}"
+                                    data-question_text="{{ $data->question_text }}" data-correct_answer="{{ $data->correct_answer }}"
+                                    data-choice_1="{{ $data->choice_1 }}" data-choice_2="{{ $data->choice_2 }}" data-choice_3="{{ $data->choice_3 }}" data-choice_4="{{ $data->choice_4 }}"
+                                    data-bs-toggle="modal" data-bs-target="#editModal">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+
+                                <button type="button" class="btn btndark m-2 btn-square delete-btn" data-id="{{ $data->id }}"
+                                    data-question_text="{{ $data->question_text }}" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
             <!-- Footer Start -->
