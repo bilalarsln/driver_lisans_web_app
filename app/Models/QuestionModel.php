@@ -12,7 +12,6 @@ class QuestionModel extends Model
 
     protected $fillable = [
         'test_id',
-        'question_number',
         'question_text',
         'choice_1',
         'choice_2',

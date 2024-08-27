@@ -16,7 +16,7 @@ class QuestionController extends Controller
         $id = $request->route('id'); // Test ID'yi route üzerinden alıyoruz
         $testQuestions = TestQuestionModel::where('test_id', $id)->pluck('question_id'); // question_id'leri topluca alıyoruz
         $questions = QuestionModel::whereIn('id', $testQuestions)->get(); // Tüm ilgili soruları alıyoruz
-        return view("admin_panel.question", compact('organisation_name', 'questions'));
+        return view("admin_panel.question", compact('organisation_name', 'questions', 'id'));
     }
 
 
@@ -41,16 +41,24 @@ class QuestionController extends Controller
     //     $question->delete();
     //     return redirect()->back()->with('success', 'Şube başarıyla silindi!');
     // }
-    // public function add(Request $request)
-    // {
-    //     $question = new QuestionModel();
-    //     $question->substation_name = $request->substation_name;
-    //     $question->phone = $request->phone;
-    //     $question->address = $request->address;
-    //     $question->substation_photo = $request->substation_photo;
-    //     $question->maps = $request->maps;
-    //     $question->save();
+    public function add(Request $request)
+    {
+        $question = new QuestionModel();
+        $question->question_text = $request->question_text;
+        $question->choice_1 = $request->choice_1;
+        $question->choice_2 = $request->choice_2;
+        $question->choice_3 = $request->choice_3;
+        $question->choice_4 = $request->choice_4;
+        $question->correct_answer = $request->correct_answer;
+        $question->save();
 
-    //     return redirect()->back()->with('success', 'Şube başarıyla eklendi hayırlı olsun!');
-    // }
+        $questionId = $question->id;
+        // TestModel'e yeni kayıt ekle
+        $test = new TestQuestionModel();
+        $test->question_id = $questionId;
+        $test->test_id = $request->test_id;
+        $test->save();
+
+        return redirect()->back()->with('success', 'Soru başarıyla eklendi.');
+    }
 }

@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-end align-items-end mb-4 me-5">
                 <div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-                        <i class="fas fa-plus"></i> Yeni Şube
+                        <i class="fas fa-plus"></i> Yeni Soru Ekle
                     </button>
                 </div>
             </div>
@@ -41,15 +41,15 @@
         @include('component.backToTop')
     </div>
     <!-- Add Modal Start -->
-    @include('admin_panel.part.substation_part.substation_add')
+    @include('admin_panel.part.question_part.questionadd', ['testId' => $id])
     <!-- Add Modal End -->
 
     <!-- Edit Modal Start -->
-    @include('admin_panel.part.substation_part.substation_update')
+    @include('admin_panel.part.question_part.questionupdate')
     <!-- Edit Modal End -->
 
     <!-- Delete Modal Start -->
-    @include('admin_panel.part.substation_part.substation_delete')
+    @include('admin_panel.part.question_part.questiondelete')
     <!-- Delete Modal End -->
 
 </body>
