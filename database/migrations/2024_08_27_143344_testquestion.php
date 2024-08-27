@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lesson', function (Blueprint $table) {
-            $table->tinyIncrements('id')->primary();
-            $table->Text('name', 64);
+        Schema::create('testquestion', function (Blueprint $table) {
+            $table->id();
+            $table->string('test_id');
+            $table->string('question_id');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

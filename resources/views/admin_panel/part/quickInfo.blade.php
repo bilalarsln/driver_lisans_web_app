@@ -4,8 +4,8 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Today Sale</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <p class="mb-2">Öğrenci Sayısı</p>
+                    <h6 class="mb-0">{{$organisation_name->student_number}}</h6>
                 </div>
             </div>
         </div>
@@ -13,8 +13,8 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Total Sale</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <p class="mb-2">Öğretmen Sayısı</p>
+                    <h6 class="mb-0">{{$organisation_name->teacher_number}}</h6>
                 </div>
             </div>
         </div>
@@ -22,8 +22,8 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Today Revenue</p>
-                    <h6 class="mb-0">$34</h6>
+                    <p class="mb-2">Araç</p>
+                    <h6 class="mb-0">{{$organisation_name->vehicle_number}}</h6>
                 </div>
             </div>
         </div>
@@ -31,8 +31,8 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Total Revenue</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <p class="mb-2">Şube sayısı</p>
+                    <h6 class="mb-0">{{ $substationCount }}</h6>
                 </div>
             </div>
         </div>

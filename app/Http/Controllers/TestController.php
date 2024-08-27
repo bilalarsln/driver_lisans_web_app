@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LessonModel;
 use App\Models\OrganisationModel;
 use App\Models\TestModel;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class TestController extends Controller
     {
         $organisation_name = OrganisationModel::first();
         $test = TestModel::all();
-        return view("admin_panel.test", compact('test', 'organisation_name'));
+        $lesson = LessonModel::all();
+        return view("admin_panel.test", compact('test', 'organisation_name', 'lesson'));
     }
 
     public function update(Request $request)
@@ -21,6 +23,7 @@ class TestController extends Controller
         $test = TestModel::find($request->id);
         $test->name = $request->name;
         $test->explanation = $request->explanation;
+        $test->lesson_id = $request->lesson_id;
         $test->save();
 
         return redirect()->back()->with('success', 'Test  başarıyla güncellendi!');
@@ -32,6 +35,7 @@ class TestController extends Controller
 
         $test->name = $request->name;
         $test->explanation = $request->explanation;
+        $test->lesson_id = $request->lesson_id;
         $test->activity = "1";
         $test->save();
 

@@ -18,15 +18,6 @@
                         <label for="editExplanation" class="form-label">Açıklama</label>
                         <input type="text" class="form-control" id="editExplanation" name="explanation" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="editLesson_id" class="form-label">Ders</label>
-                        <select class="form-select" id="editLesson_id" name="lesson_id" required>
-                            <option value="" disabled>Ders Seçin</option>
-                            @foreach($lesson as $lesson)
-                            <option value="{{ $lesson->id }}">{{ $lesson->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <button type="submit" class="btn btn-primary">Kaydet</button>
                 </form>
@@ -44,12 +35,10 @@
                 var id = this.getAttribute('data-id');
                 var name = this.getAttribute('data-name');
                 var explanation = this.getAttribute('data-explanation');
-                var lesson_id = this.getAttribute('data-lesson_id');
 
                 document.getElementById('editId').value = id;
                 document.getElementById('editName').value = name;
                 document.getElementById('editExplanation').value = explanation;
-                document.getElementById('editLesson_id').value = lesson_id;
             });
         });
     });

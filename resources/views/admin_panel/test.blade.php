@@ -19,10 +19,10 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Önemli Bilgiler</h6>
+                        <h6 class="mb-0">Testler</h6>
                         <div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-                                <i class="fas fa-plus"></i> Yeni Bilgi
+                                <i class="fas fa-plus"></i> Yeni Test
                             </button>
 
                         </div>
@@ -33,7 +33,7 @@
                             <thead>
                                 <tr class="text-dark">
                                     <th scope="col">Ad</th>
-                                    <th scope="col">Açıklama</th>
+                                    <th scope="col">Dersler</th>
                                     <th scope="col">Düzenle</th>
                                     <th scope="col">Sil</th>
                                     <th scope="col">Aktiflik</th>
@@ -43,13 +43,22 @@
                             <tbody>
                                 <!-- Test content start -->
                                 @foreach ($test as $data)
-                                <tr>
-                                    <td>{{ $data->name }}</td>
-                                    <td>{{ $data->explanation }}</td>
+                                <tr class="textStart">
+                                    <td>
+                                        <a href="{{ url('/question' . $data->id) }}">
+                                            {{ $data->name }}
+                                        </a>
+                                    </td>
+                                    @foreach ($lesson as $lessons)
+                                    @if( $lessons->id == $data-> lesson_id)
+                                    <td>{{ $lessons->name }}</td>
+                                    @endif
+                                    @endforeach
                                     <td>
                                         <button type="button" class="btn btn-warning edit-btn" data-id="{{ $data->id }}"
                                             data-name="{{ $data->name }}"
                                             data-activity="{{ $data->activity }}" data-explanation="{{$data->explanation}}"
+                                            data-lesson_id="{{ $data->lesson_id }}"
                                             data-bs-toggle="modal" data-bs-target="#editModal">
                                             Düzenle
                                         </button>

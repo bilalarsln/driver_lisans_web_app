@@ -33,6 +33,7 @@
                             <thead>
                                 <tr class="text-dark">
                                     <th scope="col">Başlık</th>
+                                    <th scope="col">Dersler</th>
                                     <th scope="col">Düzenle</th>
                                     <th scope="col">Sil</th>
                                     <th scope="col">Aktiflik</th>
@@ -42,8 +43,13 @@
                             <tbody>
                                 <!-- resource content start -->
                                 @foreach ($resource as $data)
-                                <tr>
+                                <tr class="textStart">
                                     <td>{{ $data->title }}</td>
+                                    @foreach ($lesson as $lessons)
+                                    @if( $lessons->id == $data-> lesson_id)
+                                    <td>{{ $lessons->name }}</td>
+                                    @endif
+                                    @endforeach
                                     <td>
                                         <button type="button" class="btn btn-warning edit-btn" data-id="{{ $data->id }}"
                                             data-title="{{ $data->title }}"

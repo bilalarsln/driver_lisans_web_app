@@ -63,8 +63,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/test', [TestController::class, 'test'])->name('test');
     Route::put('/test/{id}/activity', [TestController::class, 'updateActivity'])->name('test.updateActivity');
 
+
     /*Soru */
-    Route::get('/question', [QuestionController::class, 'question'])->name('question');
+    Route::get('/question{id}', [QuestionController::class, 'question'])->name('question');
     Route::post('/questionadd', [QuestionController::class, 'add'])->name('questionadd');
     Route::post('/questionupdate', [QuestionController::class, 'update'])->name('questionupdate');
     Route::post('/questiondelete', [QuestionController::class, 'delete'])->name('questiondelete');
